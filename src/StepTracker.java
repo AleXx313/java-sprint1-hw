@@ -13,8 +13,8 @@ public class StepTracker {
     //Устанавливаем цель шагов.
     public void setStepTarget(int stepTarget){
         if(stepTarget > 0){
-            this.stepTarget = stepTarget;
-            System.out.println("Целевое количество шагов установлено в размере: " + this.stepTarget + " шагов.");
+            StepTracker.stepTarget = stepTarget;
+            System.out.println("Целевое количество шагов установлено в размере: " + StepTracker.stepTarget + " шагов.");
         }else{
             System.out.println("Целевое количество шагов не может равняться или быть меньше нуля!");
             System.out.println("Попробуйте еще раз и введите корректное число!");
