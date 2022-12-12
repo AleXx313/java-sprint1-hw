@@ -22,33 +22,33 @@ public class Main {
                 System.out.println("Введите номер месяца от 1 до 12:");
                 int monthNumber = scanner.nextInt();
                 printStatistic();
-                int userInput2 = scanner.nextInt();
-                while (userInput2 != 0){
-                    if (userInput2 == 1) {
+                int userStatisticInput = scanner.nextInt();
+                while (userStatisticInput != 0){
+                    if (userStatisticInput == 1) {
                         stepTracker.monthToData[monthNumber - 1].getByDaySteps();
-                    }else if (userInput2 == 2) {
+                    }else if (userStatisticInput == 2) {
                         System.out.print("Общее количество шагов за месяц " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber-1].getOverallSteps() + ".");
-                    }else if (userInput2 == 3) {
+                    }else if (userStatisticInput == 3) {
                         System.out.print("Максимальное пройденное количество шагов в месяце " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber-1].getMaxSteps() + ".");
-                    }else if (userInput2 == 4) {
+                    }else if (userStatisticInput == 4) {
                         System.out.print("Среднее количество шагов в месяце " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber-1].averageSteps() + ".");
-                    }else if (userInput2 == 5) {
+                    }else if (userStatisticInput == 5) {
                         System.out.print("Пройденная дистанция (в км) за месяц " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber-1].getDistance() + " км.");
-                    }else if (userInput2 == 6) {
+                    }else if (userStatisticInput == 6) {
                         System.out.print("Количество сожжённых килокалорий за месяц " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber-1].getCalories() + " кк.");
-                    }else if (userInput2 == 7) {
+                    }else if (userStatisticInput == 7) {
                         System.out.print("Лучшая серия за месяц " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber-1].getStreak() + ".");
                     }else{
                         System.out.println("Извините, такой команды пока нет.");
                     }
                     printStatistic();
-                    userInput2 = scanner.nextInt();
+                    userStatisticInput = scanner.nextInt();
                 }
             }else if (userInput == 3){
                 System.out.println("Введите новую цель по количеству шагов.");
