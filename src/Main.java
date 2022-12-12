@@ -10,17 +10,14 @@ public class Main {
 
         while (userInput != 0) {
             if (userInput == 1) {
-                System.out.println("Введите номер месяца от 1 до 12:");
-                int monthNumber = scanner.nextInt();
-                System.out.println("Введите номер дня месяца от 1 до 30:");
-                int dayNumber = scanner.nextInt();
+                int monthNumber = getMonthNumber();
+                int dayNumber = getDayNumber();
                 System.out.println("Введите количество пройденных за указанный день шагов");
                 int steps = scanner.nextInt();
                 stepTracker.monthToData[monthNumber - 1].saveSteps(dayNumber, steps);
             } else if (userInput == 2) {
                 System.out.println("За какой месяц вы хотите получить статистику?");
-                System.out.println("Введите номер месяца от 1 до 12:");
-                int monthNumber = scanner.nextInt();
+                int monthNumber = getMonthNumber();
                 printStatistic();
                 int userStatisticInput = scanner.nextInt();
                 while (userStatisticInput != 0) {
@@ -83,5 +80,35 @@ public class Main {
         System.out.println("6. Количество сожжённых килокалорий.");
         System.out.println("7. Лучшая серия.");
         System.out.println("0. Вернуться в главное меню.");
+    }
+
+    private static int getMonthNumber() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите номер месяца от 1 до 12:");
+        int monthNumber = 0;
+        int userMonthInput = scanner.nextInt();
+        if (userMonthInput > 0 && userMonthInput <= 12) {
+            monthNumber = userMonthInput;
+        } else {
+            System.out.println("Вы ввели некорректное значение!");
+            System.out.println("Попробуйте еще раз.");
+            getMonthNumber();
+        }
+        return monthNumber;
+    }
+
+    private static int getDayNumber(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите номер дня месяца от 1 до 30:");
+        int dayNumber = 0;
+        int userDayInput = scanner.nextInt();
+        if (userDayInput > 0 && userDayInput <= 30) {
+            dayNumber = userDayInput;
+        } else {
+            System.out.println("Вы ввели некорректное значение!");
+            System.out.println("Попробуйте еще раз.");
+            getDayNumber();
+        }
+        return dayNumber;
     }
 }
