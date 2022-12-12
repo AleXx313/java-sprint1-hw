@@ -25,7 +25,7 @@ public class Main {
                 int userStatisticInput = scanner.nextInt();
                 while (userStatisticInput != 0) {
                     if (userStatisticInput == 1) {
-                        stepTracker.monthToData[monthNumber - 1].getByDaySteps();
+                        stepTracker.monthToData[monthNumber - 1].getEachDaySummary();
                     } else if (userStatisticInput == 2) {
                         System.out.print("Общее количество шагов за месяц " + monthNumber + ": ");
                         System.out.println(stepTracker.monthToData[monthNumber - 1].getOverallSteps() + ".");

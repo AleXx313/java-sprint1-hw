@@ -36,19 +36,22 @@ public class StepTracker {
         }
 
         //Получаем ежедневную сводку по количеству шагов.
-        public void getByDaySteps() {
+        public void getEachDaySummary() {
             int counter = 0;
             for (int i = 0; i < daySteps.length; i++) {
+                //counter и if я использую тут, чтобы разбить вывод на 6 строк по 5 значений(дней) .
+                //Мне показалось, что при выводе это читается лучше, чем строка/столбец в 30 значений.
                 if (counter == 6) {
                     System.out.println("");
                     counter = 0;
                 }
                 counter++;
+                //Не совсем понял, как избежать тут if/else блока. Помимо того, чтобы поставить".",
+                //необходимо также избавится от ",".
                 if (i < daySteps.length - 1) {
                     System.out.print(i + 1 + " день: " + daySteps[i] + ", ");
                 } else {
-                    System.out.print(i + 1 + " день: " + daySteps[i] + ".");
-                    System.out.println("");
+                    System.out.println(i + 1 + " день: " + daySteps[i] + ".");
                 }
             }
         }
