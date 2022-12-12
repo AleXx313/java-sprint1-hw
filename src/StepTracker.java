@@ -11,86 +11,94 @@ public class StepTracker {
     }
 
     //Устанавливаем цель шагов.
-    public void setStepTarget(int stepTarget){
-        if(stepTarget > 0){
+    public void setStepTarget(int stepTarget) {
+        if (stepTarget > 0) {
             StepTracker.stepTarget = stepTarget;
             System.out.println("Целевое количество шагов установлено в размере: " + StepTracker.stepTarget + " шагов.");
-        }else{
+        } else {
             System.out.println("Целевое количество шагов не может равняться или быть меньше нуля!");
             System.out.println("Попробуйте еще раз и введите корректное число!");
         }
     }
 
     class MonthData {
-        int [] daySteps;
+        int[] daySteps;
         Converter converter = new Converter();
 
         //Создаем массив дней, исходя из условия - 30 дней в каждом месяце.
-        public MonthData(){
+        public MonthData() {
             daySteps = new int[30];
         }
+
         //Устанавливаем количество шагов за день.
-        public void saveSteps (int day, int steps){
-            daySteps[day-1] = steps;
+        public void saveSteps(int day, int steps) {
+            daySteps[day - 1] = steps;
         }
+
         //Получаем ежедневную сводку по количеству шагов.
-        public void getByDaySteps(){
+        public void getByDaySteps() {
             int counter = 0;
-            for (int i = 0; i < daySteps.length; i++){
-                if (counter == 6){
+            for (int i = 0; i < daySteps.length; i++) {
+                if (counter == 6) {
                     System.out.println("");
                     counter = 0;
                 }
                 counter++;
-                if (i < daySteps.length-1) {
-                    System.out.print(i+1 + " день: " + daySteps[i] + ", ");
-                }else {
-                    System.out.print(i+1 + " день: " + daySteps[i] + ".");
+                if (i < daySteps.length - 1) {
+                    System.out.print(i + 1 + " день: " + daySteps[i] + ", ");
+                } else {
+                    System.out.print(i + 1 + " день: " + daySteps[i] + ".");
                     System.out.println("");
                 }
             }
         }
-        //Получем колчиество шагов за месяц.
-        public int getOverallSteps(){
+
+        //Получем колчичество шагов за месяц.
+        public int getOverallSteps() {
             int overallSteps = 0;
-            for (int i = 0; i < daySteps.length; i++){
+            for (int i = 0; i < daySteps.length; i++) {
                 overallSteps += daySteps[i];
             }
             return overallSteps;
         }
+
         //Получаем максимальное количество шагов за месяц.
-        public int getMaxSteps(){
+        public int getMaxSteps() {
             int maxSteps = 0;
-            for (int i = 0; i < daySteps.length; i++){
-                if(daySteps[i] > maxSteps){
-                    maxSteps=daySteps[i];
+            for (int i = 0; i < daySteps.length; i++) {
+                if (daySteps[i] > maxSteps) {
+                    maxSteps = daySteps[i];
                 }
             }
             return maxSteps;
         }
+
         //Получаем среднее количество шагов.
-        public int averageSteps(){
-            return getOverallSteps()/daySteps.length;
+        public int getAverageSteps() {
+            return getOverallSteps() / daySteps.length;
         }
+
         //Получаем пройденную дистацнию.
-        public double getDistance(){
+        public double getDistance() {
 
             return converter.convertDistance(getOverallSteps());
         }
+
         //Получаем сожженные калории.
-        public double getCalories(){
+        public double getCalories() {
 
             return converter.convertCalories(getOverallSteps());
         }
+
         //Получаем лучшую серию.
-        public int getStreak(){
+        public int getStreak() {
             int maxStreak = 0;
             int currentStreak = 0;
-            for (int i = 0; i < daySteps.length; i++){
-                if (daySteps[i] >= stepTarget){
+            for (int i = 0; i < daySteps.length; i++) {
+                if (daySteps[i] >= stepTarget) {
                     currentStreak++;
-                }else{
-                    if (currentStreak > maxStreak){
+                } else {
+                    if (currentStreak > maxStreak) {
                         maxStreak = currentStreak;
                         currentStreak = 0;
                     }

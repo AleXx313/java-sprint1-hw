@@ -2,59 +2,59 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Добрый день!");
+        System.out.println("Здравствуйте!");
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker();
         printMenu();
         int userInput = scanner.nextInt();
 
         while (userInput != 0) {
-            if (userInput == 1){
+            if (userInput == 1) {
                 System.out.println("Введите номер месяца от 1 до 12:");
                 int monthNumber = scanner.nextInt();
                 System.out.println("Введите номер дня месяца от 1 до 30:");
                 int dayNumber = scanner.nextInt();
                 System.out.println("Введите количество пройденных за указанный день шагов");
                 int steps = scanner.nextInt();
-                stepTracker.monthToData[monthNumber-1].saveSteps(dayNumber, steps);
-            }else if (userInput == 2) {
+                stepTracker.monthToData[monthNumber - 1].saveSteps(dayNumber, steps);
+            } else if (userInput == 2) {
                 System.out.println("За какой месяц вы хотите получить статистику?");
                 System.out.println("Введите номер месяца от 1 до 12:");
                 int monthNumber = scanner.nextInt();
                 printStatistic();
                 int userStatisticInput = scanner.nextInt();
-                while (userStatisticInput != 0){
+                while (userStatisticInput != 0) {
                     if (userStatisticInput == 1) {
                         stepTracker.monthToData[monthNumber - 1].getByDaySteps();
-                    }else if (userStatisticInput == 2) {
+                    } else if (userStatisticInput == 2) {
                         System.out.print("Общее количество шагов за месяц " + monthNumber + ": ");
-                        System.out.println(stepTracker.monthToData[monthNumber-1].getOverallSteps() + ".");
-                    }else if (userStatisticInput == 3) {
+                        System.out.println(stepTracker.monthToData[monthNumber - 1].getOverallSteps() + ".");
+                    } else if (userStatisticInput == 3) {
                         System.out.print("Максимальное пройденное количество шагов в месяце " + monthNumber + ": ");
-                        System.out.println(stepTracker.monthToData[monthNumber-1].getMaxSteps() + ".");
-                    }else if (userStatisticInput == 4) {
+                        System.out.println(stepTracker.monthToData[monthNumber - 1].getMaxSteps() + ".");
+                    } else if (userStatisticInput == 4) {
                         System.out.print("Среднее количество шагов в месяце " + monthNumber + ": ");
-                        System.out.println(stepTracker.monthToData[monthNumber-1].averageSteps() + ".");
-                    }else if (userStatisticInput == 5) {
+                        System.out.println(stepTracker.monthToData[monthNumber - 1].getAverageSteps() + ".");
+                    } else if (userStatisticInput == 5) {
                         System.out.print("Пройденная дистанция (в км) за месяц " + monthNumber + ": ");
-                        System.out.println(stepTracker.monthToData[monthNumber-1].getDistance() + " км.");
-                    }else if (userStatisticInput == 6) {
+                        System.out.println(stepTracker.monthToData[monthNumber - 1].getDistance() + " км.");
+                    } else if (userStatisticInput == 6) {
                         System.out.print("Количество сожжённых килокалорий за месяц " + monthNumber + ": ");
-                        System.out.println(stepTracker.monthToData[monthNumber-1].getCalories() + " кк.");
-                    }else if (userStatisticInput == 7) {
+                        System.out.println(stepTracker.monthToData[monthNumber - 1].getCalories() + " кк.");
+                    } else if (userStatisticInput == 7) {
                         System.out.print("Лучшая серия за месяц " + monthNumber + ": ");
-                        System.out.println(stepTracker.monthToData[monthNumber-1].getStreak() + ".");
-                    }else{
+                        System.out.println(stepTracker.monthToData[monthNumber - 1].getStreak() + ".");
+                    } else {
                         System.out.println("Извините, такой команды пока нет.");
                     }
                     printStatistic();
                     userStatisticInput = scanner.nextInt();
                 }
-            }else if (userInput == 3){
+            } else if (userInput == 3) {
                 System.out.println("Введите новую цель по количеству шагов.");
                 int stepTarget = scanner.nextInt();
                 stepTracker.setStepTarget(stepTarget);
-            }else{
+            } else {
                 System.out.println("Извините, такой команды пока нет.");
             }
             printMenu();
@@ -71,7 +71,8 @@ public class Main {
         System.out.println("3. Изменить цель по количеству шагов.");
         System.out.println("0. Выйти из программы.");
     }
-    private static void printStatistic(){
+
+    private static void printStatistic() {
 
         System.out.println("Какую статистику вы хотите увидеть: ");
         System.out.println("1. Количество пройденных шагов по дням.");
